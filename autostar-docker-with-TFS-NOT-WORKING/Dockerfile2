@@ -1,0 +1,18 @@
+# Start from TensorFlow Serving image
+FROM tensorflow/serving
+
+# Set where models should be served from
+ENV MODEL_BASE_PATH=/models
+ENV MODEL_NAME=my_model
+
+# Copy the model file from the local directory to the container
+COPY ./1 ${MODEL_BASE_PATH}/${MODEL_NAME}/1
+
+# Expose ports
+# gRPC
+EXPOSE 8500
+# REST
+EXPOSE 8501
+
+# Start TensorFlow Serving
+CMD tensorflow_model_server --port=8500 --rest_api_port=8501 --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME}
