@@ -36,3 +36,7 @@ The following steps were taken to troubleshoot it:
 2. Alternatively, the model's architecture might be accidentally served differently from training. This seems unlikely because the architecture should be specified in the save file, but this was not completely verified, so perhaps this is the problem.
 3. Re-exporting the model was attempted, but the error persisted.
 
+## Model Monitoring
+
+While we do enable TensorBoard through tensorboard_callback in the Jupyter notebook in the hopes of using it, we were unable to do model monitoring as the result of the previously mentioned error with the TensorFlow Serving Server.
+
